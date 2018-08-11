@@ -1,0 +1,341 @@
+\ProvidesPackage{sarcastikz}
+
+\RequirePackage{xcolor}
+\RequirePackage{tikz}
+
+\newcommand*{\dummy}[1][]{\tikzset{%
+	/dummy/.cd,#1}\dummy@draw%
+}
+
+% Environment %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% body parts %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% hair styles %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newif\ifdummy@boyhair
+\newif\ifdummy@girlhair
+\newif\ifdummy@tomhair
+\newif\ifdummy@judgehair
+% clothing %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newif\ifdummy@tshirt
+\newif\ifdummy@pant
+\newif\ifdummy@judge
+\newif\ifdummy@shoes
+
+% mouth expression
+\newif\ifdummy@normal
+\newif\ifdummy@poker
+\newif\ifdummy@angry
+\newif\ifdummy@smile
+\newif\ifdummy@laugh
+\newif\ifdummy@speak
+
+% view
+\newif\ifdummy@viewright
+\newif\ifdummy@viewleft
+\newif\ifdummy@viewangry
+
+% accessories
+\newif\ifdummy@paperglass
+\newif\ifdummy@lawhammer
+
+
+
+
+\tikzset{
+	/dummy/.cd,
+	body/.code		= \def\dummy@body{#1},
+ 	head/.code		= \def\dummy@head{#1},
+ 	eye/.code			= \def\dummy@eye{#1},
+ 	pupil/.code		= \def\dummy@pupil{#1},
+ 	body	= yellow!30!pink,
+	eye		= white,
+	pupil	= blue,
+	% clothing
+	tshirt/.code = \dummy@tshirttrue \def\dummy@tshirt{#1},
+	pant/.code = \dummy@panttrue	\def\dummy@pant{#1},
+	judge/.code = \dummy@judgetrue	\def\dummy@judge{#1},
+	shoe/.code 	 = \dummy@shoestrue		\def\dummy@shoe{#1},
+	% setting default %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+	tshirt/.default	= white,
+	pant/.default	= blue,
+	judge/.default = black,
+	shoe/.default		= black,
+	% mouth expression
+	normal/.code = \dummy@normaltrue,
+	poker/.code = \dummy@pokertrue,
+	angry/.code = \dummy@angrytrue,
+	smile/.code = \dummy@smiletrue,
+	laugh/.code = \dummy@laughtrue,
+	speak/.code = \dummy@speaktrue,
+	% pupil view
+	viewangry/.code = \dummy@viewangrytrue,
+	viewleft/.code = \dummy@viewlefttrue,
+	viewright/.code = \dummy@viewrighttrue,
+	% hair
+	boyhair/.code = \dummy@boyhairtrue,
+	girlhair/.code = \dummy@girlhairtrue,
+	tomhair/.code = \dummy@tomhairtrue,
+	judgehair/.code = \dummy@judgehairtrue,
+	hair/.code = \def\dummy@hair{#1},
+	hair = black,
+	% accessories
+	paperglass/.code = \dummy@paperglasstrue,
+	lawhammer/.code = \dummy@lawhammertrue,
+}
+
+\def\dummy@draw{
+	%% Body
+	\filldraw[thick, draw=black, fill=\dummy@body] (1.1, 1.3) -- (0.8, 0.1) .. controls (0.9, 0) and (1, 0) .. (1.1, 0.1) -- (1.4, 0.5) .. controls (1.45, 0.55) and (1.55, 0.55) .. (1.6, 0.5) -- (1.9, 0.1) .. controls (2.0, 0) and (2.1, 0) .. (2.2, 0.1) -- (1.9, 1.3) -- (1.1, 1.3) -- cycle;
+
+	%% Arm
+	% Left Arm
+	\filldraw[thick, draw=black, fill=\dummy@body] (0.85, 1.2) .. controls (0.7, 1.2) and (0.55, 1) .. (0.5, 0.9) .. controls (0.49, 0.7) .. (0.6, 0.4) .. controls (0.65, 0.35) and (0.75, 0.56) .. (0.75, 0.6) .. controls (0.7, 0.8) .. (1, 1.2) -- (0.85, 1.2) -- cycle;
+
+	% Right Arm
+	\filldraw[thick, draw=black, fill=\dummy@body] (2.15, 1.2) .. controls (2.3, 1.2) and (2.45, 1) .. (2.5, 0.9) .. controls (2.51, 0.7) .. (2.4, 0.4) .. controls (2.35, 0.35) and (2.25, 0.56) .. (2.25, 0.6) .. controls (2.3, 0.8) .. (2, 1.2) -- (2.15, 1.2) -- cycle;
+
+%% t-shirt
+	\ifdummy@tshirt
+		\begin{scope}
+			\clip (0.2, 0.65) rectangle (2.8, 1.5);
+			% Body
+			\filldraw[thick, draw=black, fill=\dummy@tshirt] (1.1, 1.3) -- (0.8, 0.1) .. controls (0.9, 0) and (1, 0) .. (1.1, 0.1) -- (1.4, 0.5) .. controls (1.45, 0.55) and (1.55, 0.55) .. (1.6, 0.5) -- (1.9, 0.1) .. controls (2.0, 0) and (2.1, 0) .. (2.2, 0.1) -- (1.9, 1.3) .. controls (1.85, 0.77) and (1.15, 0.77) .. (1.1, 1.3) -- cycle;
+
+			% Arm
+			% Left Arm
+			\filldraw[thick, draw=black, fill=\dummy@tshirt] (0.85, 1.2) .. controls (0.7, 1.2) and (0.55, 1) .. (0.5, 0.9) .. controls (0.49, 0.7) .. (0.6, 0.4) .. controls (0.65, 0.35) and (0.75, 0.56) .. (0.75, 0.6) .. controls (0.7, 0.8) .. (1, 1.2) -- (0.85, 1.2) -- cycle;
+
+			% Right Arm
+			\filldraw[thick, draw=black, fill=\dummy@tshirt] (2.15, 1.2) .. controls (2.3, 1.2) and (2.45, 1) .. (2.5, 0.9) .. controls (2.51, 0.7) .. (2.4, 0.4) .. controls (2.35, 0.35) and (2.25, 0.56) .. (2.25, 0.6) .. controls (2.3, 0.8) .. (2, 1.2) -- (2.15, 1.2) -- cycle;
+		\end{scope}
+	\fi
+
+%% Shoes
+	\ifdummy@shoes
+		\begin{scope}
+			\clip (0.2, 0.3) rectangle (2.8, 0);
+			% Body
+			\filldraw[thick, draw=black, fill=\dummy@shoe] (1.1, 1.3) -- (0.8, 0.1) .. controls (0.9, 0) and (1, 0) .. (1.1, 0.1) -- (1.4, 0.5) .. controls (1.45, 0.55) and (1.55, 0.55) .. (1.6, 0.5) -- (1.9, 0.1) .. controls (2.0, 0) and (2.1, 0) .. (2.2, 0.1) -- (1.9, 1.3) .. controls (1.85, 0.77) and (1.15, 0.77) .. (1.1, 1.3) -- cycle;
+			% Left shoe
+			\filldraw[draw=black, white] (0.95, 0.26) -- (1.1, 0.26) -- (1.05, 0.15) -- (0.9, 0.15) -- (0.95,0.26) -- cycle;
+			\filldraw[draw=black, white] (0.85, 0.12) -- (1.05, 0.12) -- (0.95, 0.08) -- (0.85, 0.12) -- cycle;
+			% Right shoe
+			\filldraw[draw=black, white] (2.05, 0.26) -- (1.9, 0.26) -- (1.95, 0.15) -- (2.1, 0.15) -- (2.05,0.26) -- cycle;
+			\filldraw[draw=black, white] (2.15, 0.12) -- (1.95, 0.12) -- (2.05, 0.08) -- (2.15, 0.12) -- cycle;
+		\end{scope}
+	\fi
+
+
+%% Pant
+	\ifdummy@pant
+		\begin{scope}
+			\clip (0.2, 0.65) rectangle (2.8, 0.3);
+			% Body
+			\filldraw[thick, draw=black, fill=\dummy@pant] (1.1, 1.3) -- (0.8, 0.1) .. controls (0.9, 0) and (1, 0) .. (1.1, 0.1) -- (1.4, 0.5) .. controls (1.45, 0.55) and (1.55, 0.55) .. (1.6, 0.5) -- (1.9, 0.1) .. controls (2.0, 0) and (2.1, 0) .. (2.2, 0.1) -- (1.9, 1.3) .. controls (1.85, 0.77) and (1.15, 0.77) .. (1.1, 1.3) -- cycle;
+		\end{scope}
+	\fi
+
+%% Judge Gown
+
+\ifdummy@judge
+		\begin{scope}
+			% Body
+			\filldraw[thick, draw=black, fill=\dummy@judge] (1.1, 1.3) -- (0.75, 0.25) -- (2.25, 0.25) -- (1.9, 1.3) -- (1.1, 1.3) -- cycle;
+			\filldraw[thick, white] (1.3, 1.3) -- (1.15, 0.8) -- (1.25, 0.85) -- (1.3, 1) -- (1.4, 0.8) -- (1.6, 0.8) -- (1.7, 1) -- (1.75, 0.85) -- (1.85, 0.8) -- (1.7, 1.3) -- (1.3,1.3) --cycle;
+
+			\clip (0.2, 0.7) rectangle (2.8, 1.3);
+			% Left Arm
+			\filldraw[thick, draw=black, fill=\dummy@judge] (0.9, 1.3) -- (0.4, 1.1) -- (0.9, 0.7)  -- (1.0, 1.3) -- (0.9, 1.3) -- cycle;
+
+			% Right Arm
+			\filldraw[thick, draw=black, fill=\dummy@judge] (2.1, 1.3) -- (2.6, 1.1) -- (2.1, 0.7)  -- (2.0, 1.3) -- (2.1, 1.3) -- cycle;
+		\end{scope}
+	\fi
+
+
+
+%% Head - push it to the last
+	\ifdefined\dummy@head\else\let\dummy@head=\dummy@body\fi
+	\filldraw[thick, draw=black, fill=\dummy@head] (1.5,1.97) ellipse (1.2cm and 0.97cm);
+
+
+%% Eye
+% Left eye
+	\begin{scope}
+		\clip (1.5,1.97) ellipse (1.2cm and 0.97cm);
+		\filldraw[thick, draw=black, fill=\dummy@eye] (0.35, 2.2) .. controls (0.8, 2.3) and (1.1, 2.0) .. (1.4, 1.8) .. controls (0.9, 1.3) and (0.6, 1.3) .. (0.43, 1.5) .. controls (0.2, 1.6) and (0.1, 2.0) .. (0.35, 2.2) --cycle;
+		\draw[thick] (1.4, 1.8) -- (1.42, 1.75) -- (1.42, 1.83);
+	\end{scope} 
+	
+
+
+	% Right eye
+	\begin{scope}
+		\clip (1.5,1.97) ellipse (1.2cm and 0.97cm);
+		\filldraw[thick, draw=black, fill=\dummy@eye] (2.65, 2.2) .. controls (2.2, 2.3) and (1.9, 2.0) .. (1.6, 1.8) .. controls (2.1, 1.3) and (2.4, 1.3) .. (2.57, 1.5) .. controls (2.8, 1.6) and (2.9, 2.0) .. (2.65, 2.2) --cycle;
+		\draw[thick] (1.6, 1.8) -- (1.58, 1.75) -- (1.58, 1.83);
+	\end{scope} 
+	
+
+	\ifdummy@viewangry
+		% Left pupil
+		\begin{scope}
+			\clip (1.5,1.97) ellipse (1.2cm and 0.97cm);
+			\clip (0.35, 2.2) .. controls (0.8, 2.3) and (1.1, 2.0) .. (1.4, 1.8) .. controls (0.9, 1.3) and (0.6, 1.3) .. (0.43, 1.5) .. controls (0.2, 1.6) and (0.1, 2.0) .. (0.35, 2.2) --cycle;
+			\filldraw[rotate=-10, \dummy@pupil] (0.5, 2.1) ellipse (0.8cm and 0.5 cm);
+			\filldraw[rotate=-10, black] (0.5, 2.1) ellipse (0.7cm and 0.3 cm);
+			\filldraw[rotate=-10, \dummy@eye] (0.5, 2.1) ellipse (0.3cm and 0.2 cm);
+		\end{scope}
+			% Right pupil
+		\begin{scope}
+			\clip (1.5,1.97) ellipse (1.2cm and 0.97cm);
+			\clip (2.65, 2.2) .. controls (2.2, 2.3) and (1.9, 2.0) .. (1.6, 1.8) .. controls (2.1, 1.3) and (2.4, 1.3) .. (2.57, 1.5) .. controls (2.8, 1.6) and (2.9, 2.0) .. (2.65, 2.2) --cycle;
+			\filldraw[rotate=10, \dummy@pupil] (2.5, 1.6) ellipse (0.8cm and 0.5 cm);
+			\filldraw[rotate=10, black] (2.5, 1.6) ellipse (0.7cm and 0.3 cm);
+			\filldraw[rotate=10, \dummy@eye] (2.5, 1.6) ellipse (0.3cm and 0.2 cm);
+		\end{scope}
+	\else
+		\ifdummy@viewleft
+			% Left pupil
+			\begin{scope}
+				\clip (1.5,1.97) ellipse (1.2cm and 0.97cm);
+				\clip (0.35, 2.2) .. controls (0.8, 2.3) and (1.1, 2.0) .. (1.4, 1.8) .. controls (0.9, 1.3) and (0.6, 1.3) .. (0.43, 1.5) .. controls (0.2, 1.6) and (0.1, 2.0) .. (0.35, 2.2) --cycle;
+				\filldraw[\dummy@pupil] (0.3, 1.9) ellipse (0.7cm and 0.8 cm);
+				\filldraw[black] (0.3, 1.9) ellipse (0.5cm and 0.7 cm);
+				\filldraw[\dummy@eye] (0.3, 1.8) ellipse (0.2cm and 0.2 cm);
+			\end{scope}
+				% Right pupil
+			\begin{scope}
+				\clip (1.5,1.97) ellipse (1.2cm and 0.97cm);
+				\clip (2.65, 2.2) .. controls (2.2, 2.3) and (1.9, 2.0) .. (1.6, 1.8) .. controls (2.1, 1.3) and (2.4, 1.3) .. (2.57, 1.5) .. controls (2.8, 1.6) and (2.9, 2.0) .. (2.65, 2.2) --cycle;
+				\filldraw[\dummy@pupil] (1.6, 1.9) ellipse (0.7cm and 0.8 cm);
+				\filldraw[black] (1.6, 1.9) ellipse (0.5cm and 0.7 cm);
+				\filldraw[\dummy@eye] (1.6, 1.8) ellipse (0.2cm and 0.2 cm);
+			\end{scope}
+		\else
+			\ifdummy@viewright
+					% Left pupil
+				\begin{scope}
+					\clip (1.5,1.97) ellipse (1.2cm and 0.97cm);
+					\clip (0.35, 2.2) .. controls (0.8, 2.3) and (1.1, 2.0) .. (1.4, 1.8) .. controls (0.9, 1.3) and (0.6, 1.3) .. (0.43, 1.5) .. controls (0.2, 1.6) and (0.1, 2.0) .. (0.35, 2.2) --cycle;
+					\filldraw[\dummy@pupil] (1.4, 1.9) ellipse (0.7cm and 0.8 cm);
+					\filldraw[black] (1.4, 1.9) ellipse (0.5cm and 0.7 cm);
+					\filldraw[\dummy@eye] (1.4, 1.8) ellipse (0.2cm and 0.2 cm);
+				\end{scope}
+					% Right pupil
+				\begin{scope}
+					\clip (1.5,1.97) ellipse (1.2cm and 0.97cm);
+					\clip (2.65, 2.2) .. controls (2.2, 2.3) and (1.9, 2.0) .. (1.6, 1.8) .. controls (2.1, 1.3) and (2.4, 1.3) .. (2.57, 1.5) .. controls (2.8, 1.6) and (2.9, 2.0) .. (2.65, 2.2) --cycle;
+					\filldraw[\dummy@pupil] (2.7, 1.9) ellipse (0.7cm and 0.8 cm);
+					\filldraw[black] (2.7, 1.9) ellipse (0.5cm and 0.7 cm);
+					\filldraw[\dummy@eye] (2.7, 1.8) ellipse (0.2cm and 0.2 cm);
+				\end{scope}
+			\else
+					% Left pupil
+				\begin{scope}
+					\clip (1.5,1.97) ellipse (1.2cm and 0.97cm);
+					\clip (0.35, 2.2) .. controls (0.8, 2.3) and (1.1, 2.0) .. (1.4, 1.8) .. controls (0.9, 1.3) and (0.6, 1.3) .. (0.43, 1.5) .. controls (0.2, 1.6) and (0.1, 2.0) .. (0.35, 2.2) --cycle;
+					\filldraw[\dummy@pupil] (1, 1.8) ellipse (0.5cm and 0.5 cm);
+					\filldraw[black] (1, 1.8) ellipse (0.4cm and 0.3 cm);
+					\filldraw[\dummy@eye] (1.1, 1.8) ellipse (0.1cm and 0.1 cm);
+				\end{scope}
+					% Right pupil
+				\begin{scope}
+					\clip (1.5,1.97) ellipse (1.2cm and 0.97cm);
+					\clip (2.65, 2.2) .. controls (2.2, 2.3) and (1.9, 2.0) .. (1.6, 1.8) .. controls (2.1, 1.3) and (2.4, 1.3) .. (2.57, 1.5) .. controls (2.8, 1.6) and (2.9, 2.0) .. (2.65, 2.2) --cycle;
+					\filldraw[\dummy@pupil] (2, 1.8) ellipse (0.5cm and 0.5 cm);
+					\filldraw[black] (2, 1.8) ellipse (0.4cm and 0.3 cm);
+					\filldraw[\dummy@eye] (1.9, 1.8) ellipse (0.1cm and 0.1 cm);
+				\end{scope}
+			\fi
+		\fi
+	\fi
+
+
+
+%% Mouth
+	\ifdummy@normal
+		\draw[thick] (1.4, 1.35) .. controls (1.5, 1.3) .. (1.6, 1.35);
+	\else
+		\ifdummy@poker
+			\draw[thick] (1.3, 1.35) -- (1.7, 1.35);
+		\else
+			\ifdummy@angry
+				\draw[thick] (1.4, 1.35) .. controls (1.5, 1.4) .. (1.6, 1.35);
+			\else
+				\ifdummy@smile
+					\draw[thick] (1.35, 1.45) .. controls (1.4, 1.2) and (1.6, 1.2).. (1.65, 1.45);
+				\else
+					\ifdummy@laugh
+						\filldraw[thick, draw=black, fill=white] (1.2, 1.35) .. controls (1.5, 1.3) .. (1.8, 1.35) .. controls (1.5, 1.1) .. (1.2, 1.35) --cycle;
+						\begin{scope}
+							\clip (1.2, 1.35) .. controls (1.5, 1.3) .. (1.8, 1.35) .. controls (1.5, 1.1) .. (1.2, 1.35) --cycle;
+							\draw[thick] (1.4, 1.4) -- (1.4, 1);
+							\draw[thick] (1.6, 1.4) -- (1.6, 1);
+						\end{scope}
+					\else
+						\ifdummy@speak
+							\filldraw[thick, draw=black, fill=white] (1.3, 1.35) .. controls (1.5, 1.3) .. (1.7, 1.35) .. controls (1.5, 1.1) .. (1.3, 1.35) --cycle;
+							\begin{scope}
+							\clip (1.3, 1.35) .. controls (1.5, 1.3) .. (1.7, 1.35) .. controls (1.5, 1.1) .. (1.3, 1.35) --cycle;
+							\draw[fill=pink] (1.55, 1.05) circle (0.2cm);
+							\end{scope}
+						\else
+							\draw[thick] (1.4, 1.35) .. controls (1.5, 1.3) .. (1.6, 1.35);
+						\fi
+					\fi
+				\fi
+			\fi
+		\fi
+	\fi
+
+%% Hair 
+	\ifdummy@boyhair
+		\filldraw[thick, \dummy@hair] (0.3, 2) -- (0.27, 2.3) -- (0.33, 2.2) -- (0.37, 2.6) -- (0.4, 2.5) -- (1.2, 3.1) -- (1.21, 2.9) -- (1.7, 3.2) -- (1.8, 3.0) -- (2.1, 3.2) -- (2.1, 2.9) -- (2.6, 2.6) -- (2.8, 2.65) -- (2.7, 2) -- (2.6, 2) -- (2.5, 2.3) .. controls (1.8, 2.2) and (1.4, 2.3) .. (1.2, 2.4) -- (0.4, 2.1) -- (0.4, 2) -- (0.3, 2) -- cycle;
+	\else
+		\ifdummy@girlhair
+			\begin{scope}
+			\clip (1.5,1.97) ellipse (1.2cm and 0.97cm);
+			\filldraw[thick, \dummy@hair] (0.3, 2) .. controls (0.9, 2.2) .. (1.5, 2.7) .. controls (2.1, 2.2) .. (2.7, 2) -- (2.7, 3) -- (0.3, 3) -- (0.3, 2) -- cycle;
+			\end{scope}
+			\filldraw [thick, \dummy@hair] (0.3, 2) .. controls (-0.1, 1.8) .. (-0.3, 1) .. controls (0.1, 1.2) .. (0.3, 2) --cycle;
+			\filldraw [thick, \dummy@hair] (2.7, 2) .. controls (3.1, 1.8) .. (3.3, 1) .. controls (2.9, 1.2) .. (2.7, 2) --cycle;
+		\else
+			\ifdummy@tomhair
+				\begin{scope}
+					\clip (1.5,1.97) ellipse (1.2cm and 0.97cm);
+					\filldraw[thick, \dummy@hair] (0.3, 2) -- (0.27, 2.3) -- (0.33, 2.2) -- (0.37, 2.6) -- (0.4, 2.5) -- (1.2, 3.1) -- (1.21, 2.9) -- (1.7, 3.2) -- (1.8, 3.0) -- (2.1, 3.2) -- (2.1, 2.9) -- (2.6, 2.6) -- (2.8, 2.65) -- (2.7, 2) -- (2.6, 2) -- (2.5, 2.3) .. controls (1.8, 2.2) and (1.4, 2.3) .. (1.2, 2.4) -- (0.4, 2.1) -- (0.4, 2) -- (0.3, 2) -- cycle;
+				\end{scope}
+			\else
+				\ifdummy@judgehair
+					\begin{scope}
+						%\clip (1.5,1.97) ellipse (1.25cm and 1.2cm);
+						\filldraw[thick, draw=black, fill=\dummy@hair] (0.3, 2) .. controls (0.9, 2.2) .. (1.5, 2.5) .. controls (2.1, 2.2) .. (2.7, 2) -- (2.7, 2.5) .. controls (1.5, 3.2) .. (0.3, 2.5) -- (0.3, 2) -- cycle;
+						\filldraw[thick, draw=black, fill=\dummy@hair] (0.3, 2.25) circle (0.2cm);
+						\filldraw[thick, draw=black, fill=\dummy@hair] (0.3, 1.9) circle (0.15cm);
+						\filldraw[thick, draw=black, fill=\dummy@hair] (0.3, 1.6) circle (0.15cm);
+						\filldraw[thick, draw=black, fill=\dummy@hair] (2.7, 2.25) circle (0.2cm);
+						\filldraw[thick, draw=black, fill=\dummy@hair] (2.7, 1.9) circle (0.15cm);
+						\filldraw[thick, draw=black, fill=\dummy@hair] (2.7, 1.6) circle (0.15cm);
+					\end{scope}
+				\fi
+			\fi
+		\fi
+	\fi
+
+%% Paperglass
+	\ifdummy@paperglass
+		\filldraw[thick, draw=black, fill=white] (0.2, 1.5) rectangle (2.8, 2.2);
+		\filldraw[] (0.35, 1.6) rectangle (1.35, 2.1);
+		\filldraw[] (2.65, 1.6) rectangle (1.65, 2.1);
+	\fi
+
+%% lawhammer , 
+	\ifdummy@lawhammer 
+		\begin{scope}[rotate around={60:(0.6, 0.45)}, xshift=0.1cm, yshift=-0.4cm]
+			\filldraw[thick, draw=black, fill=brown!50!black] (0.65, 0.45) rectangle (0.55, 1.2);
+			\filldraw[thick, draw=black, fill=brown!50!black] (0.8, 1.2) rectangle (0.4, 1.4);
+			\filldraw[thick, draw=black, fill=brown!50!black] (0.4,1.3) ellipse (0.08cm and 0.18cm);
+			\filldraw[thick, draw=black, fill=brown!50!black] (0.8,1.3) ellipse (0.08cm and 0.18cm);
+		\end{scope}
+	\fi
+}
