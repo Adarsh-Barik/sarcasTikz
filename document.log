@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.8.3)  11 AUG 2018 14:53
+This is XeTeX, Version 3.14159265-2.6-0.99992 (TeX Live 2015/Debian) (preloaded format=xelatex 2018.8.3)  11 AUG 2018 14:58
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -885,10 +885,10 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 210.
  [3] (./document.aux) ) 
 Here is how much of TeX's memory you used:
- 24725 strings out of 493638
- 515463 string characters out of 6146797
- 750913 words of memory out of 5000000
- 27841 multiletter control sequences out of 15000+600000
+ 24726 strings out of 493638
+ 515477 string characters out of 6146797
+ 750945 words of memory out of 5000000
+ 27842 multiletter control sequences out of 15000+600000
  4705 words of font info for 36 fonts, out of 8000000 for 9000
  1328 hyphenation exceptions out of 8191
  62i,6n,65p,10393b,879s stack positions out of 5000i,500n,10000p,200000b,80000s
